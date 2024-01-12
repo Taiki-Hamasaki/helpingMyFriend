@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para a Maria</title>
+    <style>
+        * {
+            margin: 0;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        body {
+            background: rgb(18,121,44);
+            background: linear-gradient(360deg, rgba(18,121,44,1) 0%, rgba(13,113,32,1) 20%, rgba(8,156,11,1) 100%); 
+            height: 100vh;
+            margin: 0;
+        }
+
+        #interface {
+            text-align: center;
+            height: inherit;
+            margin: 0;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        #janelinha {
+            display: none;
+            height: 100vh;
+            width: 100vw;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        #nao {
+            position: static;
+        }
+        
+        #legenda {
+            color: #fff;
+        }
+
+        .botao {
+            margin: 1.3rem;
+            padding: 1rem;
+			transition: transform .2s;
+            transition: box-shadow .2s;
+			transform: translateY(-10px);
+			box-shadow: 0 5px 10px rgbA(0, 0, 0, 0.7);
+            background-color: white;
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 1rem;
+
+        }
+
+        .botao:active {
+            transform: translateY(-5px);
+			box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5);
+        }
+
+    </style>
+</head>
+<body>
+    <audio id="audio" src="https://upnow-prod.ff45e40d1a1c8f7e7de4e976d0c9e555.r2.cloudflarestorage.com/20OI55mngpVExmOVKwrKuvTHdIG3/e031748d-0b2d-4dac-803c-f0a3309a56b3?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=cdd12e35bbd220303957dc5603a4cc8e%2F20240112%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20240112T010824Z&X-Amz-Expires=43200&X-Amz-Signature=7a89b6213720f34814a9f2da337705f9b7606aeb7da37b1d3fe37506ee4b3be6&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3D%22Perfect.mp3%22" loop></audio>
+    <div id="interface">
+        <p id="titulo" style="font-size: 4rem;">Feliz aniversário de 7 meses!</p>
+        
+        <img style="width: 30vw;" id="img1" src="https://cdn.pixabay.com/animation/2022/08/06/13/15/13-15-49-261_256.gif">   
+        
+        <div id="posicao">
+            <p id="legenda">Quer sair comigo, amor?</p>
+            <button id="sim" class="botao">Sim</button>
+            <button id="nao" class="botao">Não</button>
+        </div>
+
+        <div id="janelinha">
+            <div style="background-color: #fff; border-radius: 1rem; text-align: center;position: relative;">
+                <button id="inicio" style="color: rgb(185, 180, 180);background-color: #fff;font-size: 2rem; border: none;position: absolute;top: .3rem;left: .3rem;">X</button>
+                <img style="border-radius: 1rem;width: 70%; margin: .5rem   ;" src="https://www.mediafire.com/convkey/fc48/tzkptphq62eenavzg.jpg">
+                <p style="color: #000; margin: .5rem;">Agora estou muito feliz!! Eu te amo Muito! ♥️</p>
+                <p style="color: #000; margin: .5rem;">Vamos combinar um dia?</p>
+                <a style="width: 40%;border-radius: 1rem;" href="https://wa.me/553584332708"><img style="width: inherit;border-radius: 1rem;" class="border-radius" 
+                    src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="Imagem não encontrada"></a>
+            </div>
+        </div>
+    </div>  
+
+
+    <script>
+        var btnNao = document.getElementById('nao');
+        var btnSim = document.getElementById('sim');
+        var btnInicio = document.getElementById('inicio');
+        var audio = document.getElementById('audio');
+
+
+        btnSim.addEventListener('click', function() {
+            audio.volume = 0.6;
+            audio.play();
+            notificador();
+        });
+
+        btnNao.addEventListener('click', function() {
+            btnNao.style.position = 'absolute';
+            btnNao.style.top = getRandomIntInclusive() + 'vh';
+            btnNao.style.left = getRandomIntInclusive() + 'vh';
+        });
+
+        btnInicio.addEventListener('click', function() {
+            btnNao.style.position = 'static';
+            audio.pause();
+            audio.currentTime = '0';
+            document.getElementById('titulo').style.display = 'initial';
+            document.getElementById('posicao').style.display = 'initial';
+            document.getElementById('img1').style.display = 'initial';
+            document.getElementById('janelinha').style.display = 'none';
+        });
+
+        function getRandomIntInclusive() {
+            let min = Math.ceil(1);
+            let max = Math.floor(100);
+            return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
+        }
+
+        function notificador() {
+            if(!audio.paused) {
+                document.getElementById('titulo').style.display = 'none';
+                document.getElementById('posicao').style.display = 'none';
+                document.getElementById('img1').style.display = 'none';
+                document.getElementById('janelinha').style.display = 'flex';
+            }
+        }
+
+    </script>
+
+    <!-- https://cdn.pixabay.com/animation/2022/08/06/13/15/13-15-49-261_512.gif -->
+</body>
+</html>
